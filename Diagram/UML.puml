@@ -1,5 +1,5 @@
 @startuml
-title Mini Diagramme de cas d’utilisation – Blog "Larache Patrimoine"
+title Mini Diagramme de cas d'utilisation – Blog "Larache Patrimoine"
 
 actor "Touriste culturel" as Touriste
 actor "Administrateur" as Admin
@@ -11,13 +11,13 @@ rectangle "Blog Larache Patrimoine" {
   usecase "UC3 : Rechercher un article ou un lieu" as UC3
   usecase "UC4 : Sauvegarder un article" as UC4
   usecase "UC5 : Partager un article" as UC5
-  usecase "UC6 : Gérer les articles\n(ajouter / modifier / supprimer)" as UC6
+  usecase "UC6 : Gérer les articles (ajouter / modifier / supprimer)" as UC6
 }
 
-' Relation d’héritage : Administrateur hérite de Éditeur
+' Relation d'héritage : Administrateur hérite de Éditeur
 Admin -|> Editeur
 
-' Relations entre acteurs et cas d’utilisation
+' Relations entre acteurs et cas d'utilisation
 Touriste --> UC1
 Touriste --> UC2
 Touriste --> UC3

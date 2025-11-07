@@ -1,5 +1,5 @@
 @startuml
-title Mini Diagramme de cas d’utilisation – MVP Blog "Larache Patrimoine"
+title Mini Diagramme de cas d'utilisation – MVP Blog "Larache Patrimoine"
 
 actor "Touriste culturel" as Touriste
 actor "Administrateur" as Admin
@@ -8,10 +8,10 @@ rectangle "Blog Larache Patrimoine" {
   usecase "UC1 : Consulter la liste des monuments" as UC1
   usecase "UC2 : Lire un article patrimonial" as UC2
   usecase "UC3 : Commenter un article" as UC3
-  usecase "UC4 : Gérer les articles\n(ajouter / modifier / supprimer)" as UC4
+  usecase "UC4 : Gérer les articles (ajouter / modifier / supprimer)" as UC4
 }
 
-' Relations entre acteurs et cas d’utilisation
+' Relations entre acteurs et cas d'utilisation
 Touriste --> UC1
 Touriste --> UC2
 Touriste --> UC3
