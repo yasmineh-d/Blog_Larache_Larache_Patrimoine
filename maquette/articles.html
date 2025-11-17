@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tous les Articles - Larache Patrimoine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu-med: #1e40af;
+            --bleu-clair: #3b82f6;
+            --ocre: #d97706;
+            --doré: #fbbf24;
+            --blanc-casse: #fef3c7;
+        }
+        
+        .pattern-andalous {
+            background-color: var(--blanc-casse);
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(217, 119, 6, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .patrimoine-card {
+            transition: all 0.3s ease;
+        }
+        
+        .patrimoine-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .text-bleu-med {
+            color: var(--bleu-med);
+        }
+        
+        .bg-bleu-med {
+            background-color: var(--bleu-med);
+        }
+        
+        .text-ocre {
+            color: var(--ocre);
+        }
+        
+        .bg-ocre {
+            background-color: var(--ocre);
+        }
+        
+        .text-dore {
+            color: var(--doré);
+        }
+        
+        .bg-dore {
+            background-color: var(--doré);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-landmark text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
+                            Larache Patrimoine
+                        </h1>
+                        <p class="text-xs text-gray-600">Une mémoire vivante</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Desktop -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition font-medium">Accueil</a>
+                    <a href="index.html#a-propos" class="text-gray-700 hover:text-blue-600 transition font-medium">À Propos</a>
+                    <a href="articles.html" class="text-blue-600 font-medium">Articles</a>
+                </div>
+                
+                <!-- Recherche -->
+                <div class="hidden md:flex items-center">
+                    <div class="relative">
+                        <input type="text" placeholder="Rechercher un article..." 
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500 w-64">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <!-- Menu Mobile -->
+                <button class="lg:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Menu Mobile -->
+            <div id="mobileMenu" class="hidden lg:hidden mt-4 pb-4 border-t pt-4">
+                <a href="index.html" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">Accueil</a>
+                <a href="index.html#a-propos" class="block py-2 text-gray-700 hover:text-blue-600 font-medium">À Propos</a>
+                <a href="articles.html" class="block py-2 text-blue-600 font-medium">Articles</a>
+                <div class="mt-4">
+                    <input type="text" placeholder="Rechercher un article..." 
+                           class="w-full pl-10 pr-4 py-2 border-2 border-gray-300 rounded-full">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-amber-500 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 font-playfair">
+                    Tous les Articles Patrimoniaux
+                </h1>
+                <p class="text-xl text-amber-100">
+                    Explorez notre collection complète d'articles sur le patrimoine de Larache
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtres et Recherche -->
+    <section class="py-8 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-3 mb-6">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm hover:bg-blue-700 transition">
+                    Tous
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300 transition">
+                    Architecture
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300 transition">
+                    Histoire
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300 transition">
+                    Culture
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300 transition">
+                    Artisanat
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300 transition">
+                    Jardins
+                </button>
+                <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300 transition">
+                    Monuments
+                </button>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <p class="text-gray-600">
+                    <span class="font-semibold">24 articles</span> trouvés
+                </p>
+                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                    <option>Trier par: Plus récents</option>
+                    <option>Trier par: Plus populaires</option>
+                    <option>Trier par: Titre A-Z</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- Article 1 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Architecture andalouse" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Architecture</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full ml-auto">
+                                <i class="fas fa-clock mr-1"></i>Nouveau
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Les Trésors Cachés de l'Architecture Andalouse à Larache
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Découvrez les merveilles architecturales qui témoignent du riche passé andalou...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Fatima Benali</span>
+                            <span><i class="fas fa-clock mr-1"></i>15 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556025749-3c3b8c4a4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Forteresse" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Histoire</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full ml-auto">
+                                <i class="fas fa-fire mr-1"></i>Populaire
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            La Forteresse de Larache : Témoin de l'Histoire
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Plongez dans l'histoire fascinante de la forteresse qui a protégé Larache...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Mohammed El Kabbaj</span>
+                            <span><i class="fas fa-clock mr-1"></i>20 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 3 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582827142456-4db59091c0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Culture locale" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Culture</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full ml-auto">
+                                <i class="fas fa-clock mr-1"></i>Nouveau
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Traditions Artisanales de la Médina
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Explorez les savoir-faire traditionnels qui se perpétuent dans les ateliers...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Amina Rachid</span>
+                            <span><i class="fas fa-clock mr-1"></i>12 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 4 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Jardins" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Jardins</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Les Jardins Andalous de Larache
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Découvrez ces oasis de sérénité inspirés des paradis andalous...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Youssef Amrani</span>
+                            <span><i class="fas fa-clock mr-1"></i>18 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 5 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Patrimoine religieux" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Monuments</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Les Lieux de Culte Historiques
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Explorez les mosquées, synagogues et églises qui marquent le paysage religieux...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Samira Kadri</span>
+                            <span><i class="fas fa-clock mr-1"></i>25 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 6 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Zellige" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Artisanat</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full ml-auto">
+                                <i class="fas fa-fire mr-1"></i>Populaire
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            L'Art du Zellige à Larache
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Plongez dans l'univers fascinant des maîtres zelligeurs de la ville...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Karim Benjelloun</span>
+                            <span><i class="fas fa-clock mr-1"></i>15 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 7 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556025749-3c3b8c4a4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Port" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Histoire</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Le Port de Larache : Carrefour des Civilisations
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Découvrez l'histoire maritime qui a façonné l'identité de la ville...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Hassan Mourabit</span>
+                            <span><i class="fas fa-clock mr-1"></i>22 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 8 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582827142456-4db59091c0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Cuisine" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Culture</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full ml-auto">
+                                <i class="fas fa-clock mr-1"></i>Nouveau
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Gastronomie Patrimoniale de Larache
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Explorez les recettes traditionnelles qui se transmettent de génération en génération...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Leila Alaoui</span>
+                            <span><i class="fas fa-clock mr-1"></i>16 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 9 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Musique" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded-full">Culture</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Musiques Traditionnelles de la Région
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Plongez dans l'univers musical qui fait vibrer le cœur de Larache...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Omar Tazi</span>
+                            <span><i class="fas fa-clock mr-1"></i>14 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 10 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556025749-3c3b8c4a4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Pont" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">Monuments</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Les Ponts Historiques de Larache
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Découvrez les ouvrages qui ont relié les quartiers à travers les siècles...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Rachida El Fassi</span>
+                            <span><i class="fas fa-clock mr-1"></i>19 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 11 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582827142456-4db59091c0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Tapis" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded-full">Artisanat</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            L'Art du Tapis Larachi
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Explorez les motifs et techniques des tapis traditionnels de la région...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Fatima Zahra</span>
+                            <span><i class="fas fa-clock mr-1"></i>21 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Article 12 -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556025749-3c3b8c4a4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Festival" 
+                             class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Culture</span>
+                            <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded-full ml-auto">
+                                <i class="fas fa-fire mr-1"></i>Populaire
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition cursor-pointer">
+                            Festivals et Célébrations Traditionnelles
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-3">
+                            Découvrez les événements qui animent la vie culturelle de Larache...
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span><i class="fas fa-user mr-1"></i>Nourredine Bahri</span>
+                            <span><i class="fas fa-clock mr-1"></i>17 min</span>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12">
+                <nav class="flex space-x-2">
+                    <button class="px-3 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg">1</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">2</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">3</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">...</button>
+                    <button class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">6</button>
+                    <button class="px-3 py-2 bg-gray-200 text-gray-600 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-amber-500 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 font-playfair">
+                    Restez Informé
+                </h3>
+                <p class="text-amber-100 mb-8">
+                    Abonnez-vous pour recevoir les derniers articles sur le patrimoine de Larache
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Votre adresse email" 
+                           class="flex-1 px-4 py-3 rounded-full text-gray-800 focus:outline-none">
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                        S'abonner
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Larache Patrimoine</h3>
+                            <p class="text-xs text-gray-400">Une mémoire vivante</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Plateforme collaborative dédiée à la préservation du patrimoine de Larache
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Explorer</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="index.html#a-propos" class="text-gray-400 hover:text-white transition">À Propos</a></li>
+                        <li><a href="articles.html" class="text-gray-400 hover:text-white transition">Articles</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Larache Patrimoine. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Filter functionality
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('Tous') || button.textContent.includes('Architecture') || 
+                button.textContent.includes('Histoire') || button.textContent.includes('Culture') ||
+                button.textContent.includes('Artisanat') || button.textContent.includes('Jardins') ||
+                button.textContent.includes('Monuments')) {
+                button.addEventListener('click', function() {
+                    // Remove active state from all buttons
+                    document.querySelectorAll('button').forEach(btn => {
+                        if (btn.textContent.includes('Tous') || btn.textContent.includes('Architecture') || 
+                            btn.textContent.includes('Histoire') || btn.textContent.includes('Culture') ||
+                            btn.textContent.includes('Artisanat') || btn.textContent.includes('Jardins') ||
+                            btn.textContent.includes('Monuments')) {
+                            btn.classList.remove('bg-blue-600', 'text-white');
+                            btn.classList.add('bg-gray-200', 'text-gray-700');
+                        }
+                    });
+                    
+                    // Add active state to clicked button
+                    this.classList.remove('bg-gray-200', 'text-gray-700');
+                    this.classList.add('bg-blue-600', 'text-white');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
