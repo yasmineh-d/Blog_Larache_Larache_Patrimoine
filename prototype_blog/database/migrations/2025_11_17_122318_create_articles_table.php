@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('content');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // → crée user_id + clé étrangère vers users.id + supprime les articles si l'utilisateur est supprimé
             $table->timestamps();
         });
     }
