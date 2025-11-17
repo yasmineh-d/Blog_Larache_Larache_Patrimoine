@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - Larache Patrimoine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu-med: #1e40af;
+            --bleu-clair: #3b82f6;
+            --ocre: #d97706;
+            --doré: #fbbf24;
+            --blanc-casse: #fef3c7;
+        }
+        
+        .pattern-andalous {
+            background-color: var(--blanc-casse);
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(217, 119, 6, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 64, 175, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .patrimoine-card {
+            transition: all 0.3s ease;
+        }
+        
+        .patrimoine-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .text-bleu-med {
+            color: var(--bleu-med);
+        }
+        
+        .bg-bleu-med {
+            background-color: var(--bleu-med);
+        }
+        
+        .text-ocre {
+            color: var(--ocre);
+        }
+        
+        .bg-ocre {
+            background-color: var(--ocre);
+        }
+        
+        .text-dore {
+            color: var(--doré);
+        }
+        
+        .bg-dore {
+            background-color: var(--doré);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-landmark text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-600 to-amber-500 bg-clip-text text-transparent">
+                            Larache Patrimoine
+                        </h1>
+                        <p class="text-xs text-gray-600">Une mémoire vivante</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Desktop -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition font-medium">Accueil</a>
+                    <a href="index.html#a-propos" class="text-gray-700 hover:text-blue-600 transition font-medium">À Propos</a>
+                    <a href="index.html#articles" class="text-gray-700 hover:text-blue-600 transition font-medium">Articles</a>
+                </div>
+                
+                <!-- Bouton retour -->
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Retour aux articles
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center text-sm text-gray-500 mb-6">
+                <a href="index.html" class="hover:text-blue-600 transition">Accueil</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <a href="index.html#articles" class="hover:text-blue-600 transition">Articles</a>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <span class="text-gray-700">Historique</span>
+            </nav>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex items-center mb-4">
+                    <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">Architecture</span>
+                    <span class="bg-green-100 text-green-600 text-xs px-3 py-1 rounded-full ml-2">
+                        <i class="fas fa-clock mr-1"></i>Nouveau
+                    </span>
+                </div>
+                
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 font-playfair">
+                    Historique
+                </h1>
+                
+                <div class="flex items-center justify-between border-y py-4 mb-8">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&q=80" 
+                             alt="Auteur" 
+                             class="w-12 h-12 rounded-full mr-3">
+                        <div>
+                            <p class="font-medium text-gray-800">Fatima Benali</p>
+                            <p class="text-sm text-gray-500">Architecte et historienne du patrimoine</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-gray-500">15 Nov 2024</p>
+                        <p class="text-sm text-gray-500">15 min de lecture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Image -->
+    <section class="relative h-96 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+             alt="Architecture andalouse de Larache" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white">
+            <p class="text-lg italic max-w-2xl">
+                "L'architecture andalouse de Larache est un poème de pierre et de lumière, 
+                où chaque détail raconte une histoire de croisement culturel."
+            </p>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="prose prose-lg max-w-none">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 font-playfair">Un bastion millénaire au cœur de l'histoire</h2>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        La Forteresse de Larache, majestueuse sentinelle dominant l'océan Atlantique, 
+                        est bien plus qu'un simple édifice militaire. C'est un livre d'histoire vivant 
+                        dont les murs ont vu passer les grandes civilisations qui ont marqué le Maroc. 
+                        Des Phéniciens aux Portugais, des Andalous aux Alaouites, chaque pierre de cette 
+                        forteresse porte les empreintes des siècles et des cultures qui se sont succédé.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 mt-8 font-playfair">Une architecture militaire d'exception</h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        La forteresse de Larache se distingue par son architecture militaire sophistiquée, 
+                        conçue à la fois pour la défense et la surveillance. Ses remparts massifs en pierre de taille, 
+                        ses tours de guet stratégiquement positionnées et ses systèmes de défense avancés témoignent 
+                        d'une expertise militaire remarquable pour l'époque. Les douves, aujourd'hui comblées, 
+                        et les ponts-levis rappellent l'importance stratégique de cet édifice dans la protection 
+                        de la cité.
+                    </p>
+                    
+                    <div class="bg-gray-50 border-l-4 border-amber-500 p-6 my-8">
+                        <h4 class="font-bold text-gray-800 mb-2">La construction en pierre de taille</h4>
+                        <p class="text-gray-600">
+                            Les murs de la forteresse sont construits en pierre de taille extraite des carrières locales, 
+                            assemblées avec une précision remarquable. Cette technique de construction, héritée des 
+                            bâtisseurs andalous, a permis à l'édifice de résister aux assauts du temps et aux intempéries 
+                            océaniques pendant plus de quatre siècles.
+                        </p>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 mt-8 font-playfair">Les trésors intérieurs de la forteresse</h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        En se perdant dans les ruelles de la médina de Larache, on découvre des merveilles 
+                        architecturales qui semblent figées dans le temps. Les maisons traditionnelles, avec leurs 
+                        façades sobres qui cachent des intérieurs somptueux, sont de véritables palais discrets. 
+                        Les portes en bois de cèdre sculpté, les fenêtres grillagées de fer forgé et les corniches 
+                        en stuc témoignent d'un savoir-faire artisanal qui se transmet de génération en génération.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1556025749-3c3b8c4a4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Cour intérieure andalouse" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h5 class="font-bold text-gray-800 mb-2">Les patios andalous</h5>
+                                <p class="text-gray-600 text-sm">
+                                    Espaces de vie centrale qui régulent la température et créent une intimité protectrice.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1582827142456-4db59091c0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Détail architectural" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h5 class="font-bold text-gray-800 mb-2">Le travail du bois</h5>
+                                <p class="text-gray-600 text-sm">
+                                    Portes, plafonds et moucharabiehs en cèdre sculpté avec une précision exceptionnelle.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 mt-8 font-playfair">Une influence durable</h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        L'influence de l'architecture andalouse ne se limite pas aux anciens bâtiments. 
+                        De nombreux architectes contemporains s'inspirent de ces principes de conception pour 
+                        créer des bâtiments modernes qui respectent l'environnement et la culture locale. 
+                        L'utilisation de matériaux naturels, l'optimisation de la lumière naturelle et la 
+                        création d'espaces de vie conviviaux sont autant de leçons tirées de cet héritage 
+                        architectural remarquable.
+                    </p>
+                    
+                    <blockquote class="border-l-4 border-blue-600 pl-6 py-4 my-8 bg-blue-50">
+                        <p class="text-gray-700 italic text-lg">
+                            "Préserver l'architecture andalouse de Larache, c'est préserver une partie de notre âme collective, 
+                            une mémoire qui nous rappelle que la beauté et l'harmonie sont des valeurs universelles."
+                        </p>
+                        <footer class="mt-4 text-gray-600">
+                            — Fatima Benali, architecte du patrimoine
+                        </footer>
+                    </blockquote>
+                    
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 mt-8 font-playfair">Vers une préservation durable</h3>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        La préservation de ce patrimoine architectural représente un défi majeur pour les générations 
+                        actuelles. Entre l'usure du temps, les pressions immobilières et la perte des savoir-faire 
+                        artisanaux, ces trésors sont menacés. Cependant, des initiatives locales et internationales 
+                        œuvrent pour sauvegarder ces bijoux architecturaux, en formant de nouveaux artisans, 
+                        en restaurant les bâtiments historiques et en sensibilisant le public à l'importance de 
+                        cet héritage.
+                    </p>
+                </div>
+                
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2 mt-8 pt-8 border-t">
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#Architecture</span>
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#Patrimoine</span>
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#Andalous</span>
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#Larache</span>
+                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">#Artisanat</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Similaires -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center font-playfair">
+                    Articles similaires
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1556025749-3c3b8c4a4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Forteresse" 
+                                 class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Histoire</span>
+                            <h4 class="text-lg font-bold text-gray-800 mt-2 mb-2">La Forteresse de Larache</h4>
+                            <a href="detail.html" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                                Lire la suite →
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1582827142456-4db59091c0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Culture locale" 
+                                 class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">Culture</span>
+                            <h4 class="text-lg font-bold text-gray-800 mt-2 mb-2">Traditions Artisanales</h4>
+                            <a href="detail.html" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                                Lire la suite →
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden patrimoine-card">
+                        <div class="h-40 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                                 alt="Jardins" 
+                                 class="w-full h-full object-cover hover:scale-110 transition duration-300">
+                        </div>
+                        <div class="p-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">Jardins</span>
+                            <h4 class="text-lg font-bold text-gray-800 mt-2 mb-2">Jardins Andalous</h4>
+                            <a href="detail.html" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                                Lire la suite →
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-white pattern-andalous">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 font-playfair">
+                    Restez connecté à l'histoire de Larache
+                </h3>
+                <p class="text-gray-600 mb-8">
+                    Recevez nos derniers articles et découvertes patrimoniales directement dans votre boîte mail
+                </p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Votre adresse email" 
+                           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" 
+                            class="px-6 py-3 bg-gradient-to-r from-blue-600 to-amber-500 text-white rounded-lg hover:from-blue-700 hover:to-amber-600 transition font-medium">
+                        S'abonner
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo et description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-amber-500 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Larache Patrimoine</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Une plateforme dédiée à la préservation et à la valorisation du riche patrimoine 
+                        historique et culturel de la ville de Larache.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigation rapide -->
+                <div>
+                    <h4 class="font-bold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition">Accueil</a></li>
+                        <li><a href="index.html#a-propos" class="text-gray-300 hover:text-white transition">À Propos</a></li>
+                        <li><a href="index.html#articles" class="text-gray-300 hover:text-white transition">Articles</a></li>
+                        <li><a href="articles.html" class="text-gray-300 hover:text-white transition">Tous les articles</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-amber-500"></i>
+                            info@larachepatrimoine.ma
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-amber-500"></i>
+                            +212 5XX-XX-XX-XX
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-amber-500"></i>
+                            Larache, Maroc
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Larache Patrimoine. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
