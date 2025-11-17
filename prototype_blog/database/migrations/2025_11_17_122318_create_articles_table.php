@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('Articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('content');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            // → crée user_id + clé étrangère vers users.id + supprime les articles si l'utilisateur est supprimé
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('title', 180);
+            $table->string('slug', 200)->unique();
+            $table->text('excrept')->nullable();
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('Articles');
     }
 };

@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
@@ -16,10 +18,13 @@ class ArticleFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->unique()->sentence(4);
         return [
-            'title' => $this->faker->sentence(),
-            'content' => $this->faker->paragraphs(3, true),
-            'user_id' => User::factory(),
+            'user_id'=> User::inRandomOrder()->value('id') ?? 1,
+            'title'=> $title,
+            'slug'=> Str::slug($title),
+            'excrept'=>fake()->sentence(12),
+            'content'=> fake()->paragraphs(3, true),
         ];
     }
 }
